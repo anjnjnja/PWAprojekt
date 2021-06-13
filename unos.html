@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <style>
+        .error {
+            color: red;
+            font-size: 80%;
+        }
+    </style>
+</head>
+
+<body id="crvenotijelo">
+    <header>
+        <div id="navigacijadiv">
+            
+        <nav id="navigacija">
+            <a id="mopo" href="#"><img src="home.png"></a>
+            <a class="navlink" href="projektindex.php">HOME</a>
+            <a class="navlink" href="kategorija.php?kategorija=politika">POLITIKA</a>
+            <a class="navlink" href="kategorija.php?kategorija=sport">SPORT</a>
+            <a class="navlink" href="unos.html">UNOS</a>
+            <a class="navlink" href="administracija.php">ADMINISTRACIJA</a>
+        </nav>
+        </div>
+    </header>
+
+    <div id="glavni">
+        <form name="unos" enctype="multipart/form-data" method="POST" action="skripta.php" >
+
+            <label for="naslov">Naslov vijesti: </label>
+            <input type="text" name="naslov" id="naslov"/>
+            <span id="porukaNaslov" class="error"></span>
+
+            <br><br>
+            <label for="sazetak">Kratki sažetak vijesti: </label>
+            <br>
+            <textarea rows="6" cols="50" name="sazetak" id="sazetak"></textarea>
+            <span id="porukaSazetak" class="error"></span>
+    
+            <br><br>
+            <label for="vijest">Tekst vijesti: </label>
+            <br>
+            <textarea rows="16" cols="50" name="vijest" id="vijest"></textarea>
+            <span id="porukaVijest" class="error"></span>
+    
+            <br><br>
+            <label for="kategorija">Kategorija vijesti: </label>
+            <select id="kategorija" name="kategorija">
+                <option value="" disabled selected>Odabir kategorije</option>
+                <option value="politika">Politika</option>
+                <option value="sport">Sport</option>
+            </select>
+            <span id="porukaKategorija" class="error"></span>
+
+            <br><br>
+            <label for="unosSlike">Odabiranje slike: </label>
+            <input type="file" name="unosSlike" id="unosSlike"/>
+            <span id="porukaUnosSlike" class="error"></span>
+         
+            <br><br>
+            <label for="archive">Spremiti u arhivu:</label>
+            <input type="checkbox" name="archive" id="archive"> Da
+            
+
+            <br><br>
+            <button type="reset" value="Poništi">Poništi</button>
+            <button type="submit" id="gumb">Prijava</button>
+        
+        </form>
+
+    </div>
+
+
+
+
+    <footer id="podnozje">
+        <h4 id="copyright" >Copyright 2021. Anja Penić</h4>
+    </footer>
+
+    <script type="text/javascript">
+        // Provjera forme prije slanja
+        
+        document.getElementById("gumb").onclick = function(event) {
+        
+        var slanjeForme = true;
+       
+        // Naslov vjesti (5-30 znakova)
+        var poljeTitle = document.getElementById("naslov");
+        var title = document.getElementById("naslov").value;
+        if (title.length < 5 || title.length > 30) {
+            slanjeForme = false;
+            poljeTitle.style.border="1px dashed red";
+            document.getElementById("porukaNaslov").innerHTML="<br>Naslov vijesti mora imati između 5 i 30 znakova!<br>";
+        } else {
+            poljeTitle.style.border="1px solid green";
+            document.getElementById("porukaNaslov").innerHTML="";
+        }
+       
+        // Kratki sadržaj (10-100 znakova)
+        var poljeAbout = document.getElementById("sazetak");
+        var about = document.getElementById("sazetak").value;
+        if (about.length < 10 || about.length > 100) {
+            slanjeForme = false;
+            poljeAbout.style.border="1px dashed red";
+            document.getElementById("porukaSazetak").innerHTML="<br>Kratki sadržaj mora imati između 10 i 100 znakova!<br>";
+        } else {
+            poljeAbout.style.border="1px solid green";
+            document.getElementById("porukaSazetak").innerHTML="";
+        }
+        // Sadržaj mora biti unesen
+        var poljeContent = document.getElementById("vijest");
+        var content = document.getElementById("vijest").value;
+        if (content.length == 0) {
+            slanjeForme = false;
+            poljeContent.style.border="1px dashed red";
+            document.getElementById("porukaVijest").innerHTML="<br>Sadržaj mora biti unesen!<br>";
+        } else {
+            poljeContent.style.border="1px solid green";
+            document.getElementById("porukaVijest").innerHTML="";
+        }
+        // Slika mora biti unesena
+        var poljeSlika = document.getElementById("unosSlike");
+        var pphoto = document.getElementById("unosSlike").value;
+        if (pphoto.length == 0) {
+            slanjeForme = false;
+            poljeSlika.style.border="1px dashed red";
+            document.getElementById("porukaUnosSlike").innerHTML="<br>Slika mora biti unesena!<br>";
+        } else {
+            poljeSlika.style.border="1px solid green";
+            document.getElementById("porukaUnosSlike").innerHTML="";
+        }
+        // Kategorija mora biti odabrana
+        var poljeCategory = document.getElementById("kategorija");
+        if(document.getElementById("kategorija").selectedIndex == 0) {
+            slanjeForme = false;
+            poljeCategory.style.border="1px dashed red";
+            document.getElementById("porukaKategorija").innerHTML="<br>Kategorija mora biti odabrana!<br>";
+        } else {
+            poljeCategory.style.border="1px solid green";
+            document.getElementById("porukaKategorija").innerHTML="";
+        }
+        
+        if (slanjeForme != true) {
+            event.preventDefault();
+        }
+       
+};
+</script>
+</body>
+</html>

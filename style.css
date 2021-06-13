@@ -1,0 +1,92 @@
+.reiseartikl{
+    width: 30%;
+    float: left;
+    border-bottom: grey solid;
+    margin: 1%;
+    background-color: white;
+}
+
+.brisanje {
+    clear: both;
+}
+
+.naslov2{
+    margin-left: 1%;
+    margin-top: 20px;
+}
+
+.podcrta{
+    width: 98%;
+    margin: 0 auto;
+    border-bottom: lightgray solid;
+}
+
+#main, #glavni{
+    background-color: #E9E9E9;
+    margin: 0 auto;
+    width: 60%;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#glavni{
+    background-color: white;
+    padding: 1%;
+}
+
+#crvenotijelo{
+    background-color: #df0e1b;
+}
+
+.slika{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+#navigacija{
+    width: 100%;
+    height: 50%;
+    background-color: #df0e1b;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#navigacijadiv{
+    width: 100%;
+    background-color: white;
+    border-bottom: gray solid;
+}
+
+.navlink{
+    display: inline;
+    margin-inline: 0.5%;
+    color: white;
+    text-decoration: none;
+}
+
+.navlink:hover{
+    background-color: white;
+    color: #df0e1b;
+}
+
+#podnozje{
+    width: 100%;
+    height: 40px;
+    background-color: #3c3c3c;
+    color: white;
+    text-align: center;
+    text-size-adjust: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#mopo{
+    max-height: 30px;
+
+}
+
+.error {
+    color: red;
+    font-size: 70%;
+}
+
